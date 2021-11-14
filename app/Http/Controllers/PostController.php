@@ -45,6 +45,11 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::findOrFail($id);
+
+        if ($post->user_id !== Auth::id()) {
+            abort(403);
+        }
+
         return view('post.update', compact('post'));
     }
 
@@ -63,6 +68,10 @@ class PostController extends Controller
 
         $post = Post::findOrFail($id);
 
+        if ($post->user_id !== Auth::id()) {
+            abort(403);
+        }
+
         $post->update([
             'image' => $path,
             'user_id' => Auth::id(),
@@ -77,6 +86,10 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
         $post->delete();
+
+        if ($post->user_id !== Auth::id()) {
+            abort(403);
+        }
 
         return redirect()->route('dashboard')->with('success', true);
     }
