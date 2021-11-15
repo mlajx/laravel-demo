@@ -9,7 +9,7 @@
         @if($post->image)
             <img src="{{ url('storage/' . $post->image)}}" alt="{{$post->title}}" class="w-full h-96 object-cover">
         @endif
-        <div class="p-4 flex flex-col justify-between h-36">
+        <div class="p-4 flex flex-col justify-between">
             <div>
                 <p class="mb-4">
                     {{$post->description}}
@@ -31,5 +31,4 @@
     <a href="{{route('home')}}" class="text-gray-800 my-4 block">
         Voltar
     </a>
-
 </x-guest-layout>

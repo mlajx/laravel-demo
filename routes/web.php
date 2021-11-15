@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/posts/create',     [PostController::class, 'create'])->middleware(['auth'])->name('posts.create');
 Route::get('/posts/{id}',       [PostController::class, 'show'])->name('posts.show');
 Route::post('/posts',           [PostController::class, 'post'])->middleware(['auth'])->name('posts.post');
